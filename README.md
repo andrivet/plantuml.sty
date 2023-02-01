@@ -1,18 +1,38 @@
 # plantuml.sty
-latex (xelatex) options to process plantuml code
 
-添加该plantuml.sty可以在latex当中插入plantuml代码，示例如下：
+LaTeX (XeLaXex) package to incorporate PlantUML code into LaTex files. This package does **NOT** require LuaText.
+
+## Include inline
+
+You can include directly PlantUML code in the LaTeX code:
 
 ```latex
-\begin{plantuml}[width=0.4\textwidth]
+\begin{plantuml}[width=0.8\textwidth]
 @startuml
-skinparam dpi 300
-class 构件
-构件 "1" --> "1..N" 服务
-构件 "1" --> "1..N" 接口
-接口 "1" -> "1" 服务 : ?
+class Car
+
+Driver - Car : drives >
+Car *- Wheel : have 4 >
+Car -- Person : < owns
 @enduml
 \end{plantuml}
 ```
 
-目前plantuml还不能像includegraphics那样自由设置参数，而且DPI还必须由用户显式设定。
+## Include external file
+
+You can include an external PlantUML file:
+
+```latex
+\plantumlinput[width=0.3\textwidth]{example}
+```
+
+Note: The file included is named `exemple.puml`. Do not specify the extension in the `plantumlinput` argument.
+
+## Output
+
+![Example](./screenshot.png)
+
+## Notes
+
+* There is no need to enter words like `@startuml` and `@enduml` at the beginning of plantuml code
+* The default resolution is 300 dpi

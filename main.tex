@@ -1,32 +1,25 @@
-\documentclass{ctexart}
-\usepackage[margin=1in]{geometry}
+\documentclass{article}
 \usepackage{lipsum}
-
 \usepackage[saveall]{plantuml}
 
-\title{主测试文件}
+\title{Main test file}
 
 \begin{document}
 
 \lipsum[1]
 
+\begin{plantuml}[width=0.8\textwidth]
+@startuml
+class Car
 
-\begin{plantuml}[width=0.4\textwidth]
-class 构件
-构件 "1" --> "1..N" 服务
-构件 "1" --> "1..N" 接口
-接口 "1" -> "1" 服务 : ?
+Driver - Car : drives >
+Car *- Wheel : have 4 >
+Car -- Person : < owns
+@enduml
 \end{plantuml}
 
 \lipsum[2]
 
-\begin{plantuml}
-class 构件
-构件 "1" --> "1..N" 服务X
-构件 "1" --> "1..N" 接口
-接口 "1" -> "1" 服务 : ?
-\end{plantuml}
-
-\lipsum[3]
+\plantumlinput[width=0.3\textwidth]{example}
 
 \end{document}
